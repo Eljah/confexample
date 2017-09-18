@@ -24,7 +24,7 @@ public class NonStaticDeserializationRunner {
 
             CarTransit carTransit = mapper.readValue(json, CarTransit.class);
             System.out.println(carTransit.toString());
-            System.out.println(carTransit.strategy.getName());
+            System.out.println(carTransit.car.getNextValue());
 
         } catch (JsonGenerationException e) {
             e.printStackTrace();

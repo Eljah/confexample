@@ -5,7 +5,9 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import example.entities.Car;
 import example.entities.CarTransit;
+import example.strategies.Strategy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -27,13 +29,23 @@ public class NonStaticSerializationRunner {
     {
         ObjectMapper mapper = new ObjectMapper();
 
-        Car car=carTransit.car;
+
+        Car car= (Car)carTransit.car.getNextValue();
+        /*
+        Car car = null;
+        for (Strategy<Car> strategy: carTransit.carStrategy) {
+            car = strategy.getNext();
+            if (car!=null) {break;}
+
+        }
+        */
+
 
         //For testing
         car.middleNumber="C178CX";
         car.regionNumber="116";
 
-        carTransit.car=car;
+        //carTransit.carStrategy=car;
         carTransit.date=new Date();
         carTransit.registrator="123456";
 

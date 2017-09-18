@@ -14,7 +14,10 @@ import org.springframework.stereotype.Component;
 @JsonTypeInfo( use = JsonTypeInfo.Id.MINIMAL_CLASS,
         include = JsonTypeInfo.As.PROPERTY,
         property = "@class")
-public interface Strategy {
+public interface Strategy<T> {
     @JsonIgnore
-    String getName();
+    T getNext();
+
+    @JsonIgnore
+    boolean hasNext();
 }
