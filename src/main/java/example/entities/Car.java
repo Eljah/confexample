@@ -1,5 +1,6 @@
 package example.entities;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.stereotype.Component;
 
 /**
@@ -7,9 +8,10 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@JsonSerialize
 public class Car extends BaseToStringableObject {
-    public String middleNumber;
-    public String regionNumber;
+    public CarNumber carNumber;
+    public String carType;
 
     public Car()
     {
@@ -18,9 +20,8 @@ public class Car extends BaseToStringableObject {
 
     public Car(String middleNumber, String regionNumber)
     {
-        this.middleNumber=middleNumber;
-        this.regionNumber=regionNumber;
-
+        this.carNumber=new CarNumber(middleNumber,regionNumber);
+        this.carType="SEDAN";
     }
 
 

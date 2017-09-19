@@ -32,6 +32,9 @@ public class Executable {
         toReturn=toReturn.replace("Poor","Rich");
         toReturn=toReturn.replace("1000","10");
         nonStaticDeserializationRunner.scenario(toReturn);
+        System.out.println(nonStaticSerializationRunner.carTransit);
+        System.out.println(nonStaticSerializationRunner.carTransit.car);
+        System.out.println(nonStaticSerializationRunner.carTransit.car.getNextValue());
     }
 
 }

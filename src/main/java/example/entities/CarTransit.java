@@ -25,5 +25,5 @@ public class CarTransit extends BaseToStringableObject {
     //@Qualifier("JustValueStrategy")
     //@Qualifier("poorStrategy")
     //public Strategy strategy;
-    public ValueOrStrategy car;
+    public ValueOrStrategy<Car> car;
 }

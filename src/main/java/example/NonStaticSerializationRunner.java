@@ -24,7 +24,7 @@ public class NonStaticSerializationRunner {
 
 
     @Autowired
-    CarTransit carTransit;
+    public CarTransit carTransit;
 
     public String scenario()
     {
@@ -32,6 +32,7 @@ public class NonStaticSerializationRunner {
 
         carTransit.car.strategy=new PoorStrategy();
 
+        //carTransit.car.value=new Car("C178CX","16");
         Car car= (Car)carTransit.car.getNextValue();
         /*
         Car car = null;
@@ -44,8 +45,8 @@ public class NonStaticSerializationRunner {
 
 
         //For testing
-        car.middleNumber="C178CX";
-        car.regionNumber="116";
+        //car.carNumber.middleNumber="C178CX";
+        //car.carNumber.regionNumber="116";
 
         //carTransit.carStrategy=car;
         carTransit.date=new Date();
@@ -72,7 +73,7 @@ public class NonStaticSerializationRunner {
             e.printStackTrace();
         }
 
-        car.middleNumber="C177CX";
+        car.carNumber.middleNumber="C177CX";
 
         return jsonInString;
     }
