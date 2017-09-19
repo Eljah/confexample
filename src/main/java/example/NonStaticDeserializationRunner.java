@@ -21,7 +21,7 @@ public class NonStaticDeserializationRunner {
         try {
 
             // Convert JSON string from file to Object
-
+            System.out.println(json);
             CarTransit carTransit = mapper.readValue(json, CarTransit.class);
             System.out.println(carTransit.toString());
             System.out.println(carTransit.car.getNextValue());

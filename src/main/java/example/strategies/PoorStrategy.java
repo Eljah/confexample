@@ -1,26 +1,29 @@
 package example.strategies;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import example.entities.Car;
 import org.springframework.stereotype.Component;
+
+import java.lang.reflect.Constructor;
 
 /**
  * Created by eljah32 on 9/16/2017.
  */
 
 //@Component
-public class PoorStrategy<T> implements Strategy {
-    Class<T> clazz;
+public class PoorStrategy implements Strategy {
+    public int parameter=1000;
 
     @JsonIgnore
     @Override
-    public T getNext() {
+    public Car getNext() {
         try {
-            Thread.sleep(1000);
-            System.out.println("Doing rich strategy");
+            Thread.sleep(parameter);
+            System.out.println("Doing poor strategy");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return newInstance(clazz);
+        return new Car("K480CM","116");
     }
 
     @JsonIgnore
@@ -29,17 +32,4 @@ public class PoorStrategy<T> implements Strategy {
         return true;
     }
 
-    public String name="poor";
-
-    public <T> T newInstance(Class<T> cls) {
-        T myObject = null;
-        try {
-            myObject = cls.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return myObject;
-    }
 }

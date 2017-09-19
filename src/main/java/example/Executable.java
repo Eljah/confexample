@@ -30,6 +30,7 @@ public class Executable {
     {
         String toReturn=nonStaticSerializationRunner.scenario();
         toReturn=toReturn.replace("Poor","Rich");
+        toReturn=toReturn.replace("1000","10");
         nonStaticDeserializationRunner.scenario(toReturn);
     }
 

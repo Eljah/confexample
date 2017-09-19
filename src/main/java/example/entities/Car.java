@@ -11,5 +11,17 @@ public class Car extends BaseToStringableObject {
     public String middleNumber;
     public String regionNumber;
 
+    public Car()
+    {
+
+    }
+
+    public Car(String middleNumber, String regionNumber)
+    {
+        this.middleNumber=middleNumber;
+        this.regionNumber=regionNumber;
+
+    }
+
 
 }

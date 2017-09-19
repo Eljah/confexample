@@ -1,6 +1,7 @@
 package example.strategies;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import example.entities.Car;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,27 +9,20 @@ import org.springframework.stereotype.Component;
  */
 
 //@Component
-public class RichStrategy<T> implements Strategy {
-    public String name="rich";
-    Class<T> clazz;
+public class RichStrategy implements Strategy {
+    public int parameter=10;
 
     @JsonIgnore
     @Override
-    public T getNext() {
+    public Car getNext() {
         try {
-            Thread.sleep(10);
+            Thread.sleep(parameter);
             System.out.println("Doing rich strategy");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        try {
-            return clazz.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return null;
+            return new  Car("C178CX","116");
+
     }
 
     @Override

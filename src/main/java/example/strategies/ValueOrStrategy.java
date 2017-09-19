@@ -14,9 +14,12 @@ import org.springframework.stereotype.Component;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Component
 public class ValueOrStrategy<T> {
-    @Autowired
-    @Qualifier("car")
+    //@Autowired
+    //@Qualifier("car")
     public T value;
+
+    //@Autowired
+    //@Qualifier("poorStrategy")
     public Strategy<T> strategy;
 
     @JsonIgnore
