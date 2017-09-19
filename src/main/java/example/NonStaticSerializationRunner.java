@@ -4,9 +4,12 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import example.entities.Car;
+import example.entities.CarNumber;
 import example.entities.CarTransit;
+import example.strategies.CarNumberPoorStrategy;
 import example.strategies.PoorStrategy;
 import example.strategies.Strategy;
+import example.strategies.ValueOrStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.stereotype.Component;
@@ -30,9 +33,14 @@ public class NonStaticSerializationRunner {
     {
         ObjectMapper mapper = new ObjectMapper();
 
-        carTransit.car.strategy=new PoorStrategy();
+        //carTransit.car.strategy=new PoorStrategy();
 
         //carTransit.car.value=new Car("C178CX","16");
+
+        carTransit.car.value=new Car();
+        carTransit.car.value.carNumber=new ValueOrStrategy();
+        carTransit.car.value.carNumber.strategy=new CarNumberPoorStrategy();
+
         Car car= (Car)carTransit.car.getNextValue();
         /*
         Car car = null;
@@ -73,7 +81,7 @@ public class NonStaticSerializationRunner {
             e.printStackTrace();
         }
 
-        car.carNumber.middleNumber="C177CX";
+        car.carNumber.getNextValue().middleNumber="C177CX";
 
         return jsonInString;
     }

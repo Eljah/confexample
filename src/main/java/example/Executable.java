@@ -29,12 +29,12 @@ public class Executable {
     void start()
     {
         String toReturn=nonStaticSerializationRunner.scenario();
-        toReturn=toReturn.replace("Poor","Rich");
+        //toReturn=toReturn.replace("Poor","Rich");
         toReturn=toReturn.replace("1000","10");
         nonStaticDeserializationRunner.scenario(toReturn);
         System.out.println(nonStaticSerializationRunner.carTransit);
         System.out.println(nonStaticSerializationRunner.carTransit.car);
-        System.out.println(nonStaticSerializationRunner.carTransit.car.getNextValue());
+        System.out.println(nonStaticSerializationRunner.carTransit.car.getNextValue().carNumber.getNextValue());
     }
 
 }
